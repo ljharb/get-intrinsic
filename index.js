@@ -277,13 +277,16 @@ module.exports = function GetIntrinsic(name, allowMissing) {
 		if (hasOwn(INTRINSICS, intrinsicRealName)) {
 			value = INTRINSICS[intrinsicRealName];
 		} else if (value != null) {
+			if (!(part in value)) {
+				if (!allowMissing) {
+					throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
+				}
+				return void undefined;
+			}
 			if ($gOPD && (i + 1) >= parts.length) {
 				var desc = $gOPD(value, part);
 				isOwn = !!desc;
 
-				if (!allowMissing && !(part in value)) {
-					throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
-				}
 				// By convention, when a data property is converted to an accessor
 				// property to emulate a data property that does not suffer from
 				// the override mistake, that accessor's getter is marked with
