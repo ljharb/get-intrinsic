@@ -42,6 +42,24 @@ test('throws', function (t) {
 		'"just a dot" intrinsic throws a syntax error'
 	);
 
+	t['throws'](
+		function () { GetIntrinsic('%String'); },
+		SyntaxError,
+		'Leading % without trailing % throws a syntax error'
+	);
+
+	t['throws'](
+		function () { GetIntrinsic('String%'); },
+		SyntaxError,
+		'Trailing % without leading % throws a syntax error'
+	);
+
+	t['throws'](
+		function () { GetIntrinsic("String['prototype]"); },
+		SyntaxError,
+		'Dynamic property access is disallowed for intrinsics (unterminated string)'
+	);
+
 	forEach(v.nonStrings, function (nonString) {
 		t['throws'](
 			function () { GetIntrinsic(nonString); },
