@@ -14,7 +14,10 @@
 	"scripts": {
 		"lint": "eslint --ext=.js,.mjs .",
 		"pretest": "npm run lint",
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"tests-only": "tape 'test/*'",
+		"coverage": "nyc npm run tests-only",
+		"test": "npm run tests-only",
+		"posttest": "aud --production"
 	},
 	"repository": {
 		"type": "git",
@@ -40,6 +43,16 @@
 	"homepage": "https://github.com/ljharb/get-intrinsic#readme",
 	"devDependencies": {
 		"@ljharb/eslint-config": "^17.2.0",
-		"eslint": "^7.12.1"
+		"aud": "^1.1.2",
+		"es-abstract": "^1.18.0-next.1",
+		"eslint": "^7.12.1",
+		"foreach": "^2.0.5",
+		"has-bigints": "^1.0.0",
+		"make-async-function": "^1.0.0",
+		"make-async-generator-function": "^1.0.0",
+		"make-generator-function": "^2.0.0",
+		"nyc": "^10.3.2",
+		"object-inspect": "^1.8.0",
+		"tape": "^5.0.1"
 	}
 }
