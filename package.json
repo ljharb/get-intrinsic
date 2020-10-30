@@ -48,6 +48,7 @@
 		"aud": "^1.1.2",
 		"auto-changelog": "^2.2.1",
 		"es-abstract": "^1.18.0-next.1",
+		"es-value-fixtures": "^1.0.0",
 		"eslint": "^7.12.1",
 		"foreach": "^2.0.5",
 		"has-bigints": "^1.0.0",
