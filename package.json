@@ -1,0 +1,36 @@
+{
+	"name": "get-intrinsic",
+	"version": "0.0.0",
+	"description": "Get and robustly cache all JS language-level intrinsics at first require time",
+	"main": "index.js",
+	"exports": {
+		".": [
+			{
+				"default": "./index.js"
+			},
+			"./index.js"
+		]
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ljharb/get-intrinsic.git"
+	},
+	"keywords": [
+		"javascript",
+		"ecmascript",
+		"es",
+		"js",
+		"intrinsic",
+		"getintrinsic",
+		"es-abstract"
+	],
+	"author": "Jordan Harband <ljharb@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/ljharb/get-intrinsic/issues"
+	},
+	"homepage": "https://github.com/ljharb/get-intrinsic#readme"
+}
