@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.0.1](https://github.com/ljharb/get-intrinsic/compare/v1.0.0...v1.0.1) - 2020-10-30
+
+### Commits
+
+- [Tests] gather coverage data on every job [`d1d280d`](https://github.com/ljharb/get-intrinsic/commit/d1d280dec714e3f0519cc877dbcb193057d9cac6)
+- [Fix] add missing dependencies [`5031771`](https://github.com/ljharb/get-intrinsic/commit/5031771bb1095b38be88ce7c41d5de88718e432e)
+- [Tests] use `es-value-fixtures` [`af48765`](https://github.com/ljharb/get-intrinsic/commit/af48765a23c5323fb0b6b38dbf00eb5099c7bebc)
+
 ## v1.0.0 - 2020-10-29
 
 ### Commits
