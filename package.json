@@ -65,5 +65,10 @@
 		"commitLimit": false,
 		"backfillLimit": false,
 		"hideCredit": true
+	},
+	"dependencies": {
+		"function-bind": "^1.1.1",
+		"has": "^1.0.3",
+		"has-symbols": "^1.0.1"
 	}
 }
