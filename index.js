@@ -2,10 +2,7 @@
 
 /* globals
 	AggregateError,
-	Atomics,
-	FinalizationRegistry,
 	SharedArrayBuffer,
-	WeakRef,
 */
 
 var undefined;
@@ -17,7 +14,6 @@ var $TypeError = TypeError;
 // eslint-disable-next-line consistent-return
 var getEvalledConstructor = function (expressionSyntax) {
 	try {
-		// eslint-disable-next-line no-new-func
 		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
 	} catch (e) {}
 };

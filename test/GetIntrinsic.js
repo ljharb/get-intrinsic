@@ -9,7 +9,7 @@ var generatorFns = require('make-generator-function')();
 var asyncFns = require('make-async-function').list();
 var asyncGenFns = require('make-async-generator-function')();
 
-var callBound = require('es-abstract/helpers/callBound');
+var callBound = require('call-bind/callBound');
 var v = require('es-value-fixtures');
 var $gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
 var defineProperty = require('es-abstract/test/helpers/defineProperty');
