@@ -18,7 +18,7 @@ var $TypeError = TypeError;
 var getEvalledConstructor = function (expressionSyntax) {
 	try {
 		// eslint-disable-next-line no-new-func
-		return Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
+		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
 	} catch (e) {}
 };
 
@@ -55,6 +55,8 @@ var hasSymbols = require('has-symbols')();
 
 var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
 
+var asyncFunction = getEvalledConstructor('async function () {}');
+var generatorFunction = getEvalledConstructor('function* () {}');
 var asyncGenFunction = getEvalledConstructor('async function* () {}');
 var asyncGenFunctionPrototype = asyncGenFunction ? asyncGenFunction.prototype : undefined;
 var asyncGenPrototype = asyncGenFunctionPrototype ? asyncGenFunctionPrototype.prototype : undefined;
@@ -67,7 +69,7 @@ var INTRINSICS = {
 	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
 	'%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
 	'%AsyncFromSyncIteratorPrototype%': undefined,
-	'%AsyncFunction%': getEvalledConstructor('async function () {}'),
+	'%AsyncFunction%': asyncFunction,
 	'%AsyncGenerator%': asyncGenFunctionPrototype,
 	'%AsyncGeneratorFunction%': asyncGenFunction,
 	'%AsyncIteratorPrototype%': asyncGenPrototype ? getProto(asyncGenPrototype) : undefined,
@@ -87,7 +89,7 @@ var INTRINSICS = {
 	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
 	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
 	'%Function%': $Function,
-	'%GeneratorFunction%': getEvalledConstructor('function* () {}'),
+	'%GeneratorFunction%': generatorFunction,
 	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
 	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
 	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
