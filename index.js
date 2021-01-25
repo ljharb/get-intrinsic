@@ -55,11 +55,7 @@ var hasSymbols = require('has-symbols')();
 
 var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
 
-var asyncFunction = getEvalledConstructor('async function () {}');
-var generatorFunction = getEvalledConstructor('function* () {}');
-var asyncGenFunction = getEvalledConstructor('async function* () {}');
-var asyncGenFunctionPrototype = asyncGenFunction ? asyncGenFunction.prototype : undefined;
-var asyncGenPrototype = asyncGenFunctionPrototype ? asyncGenFunctionPrototype.prototype : undefined;
+var needsEval = {};
 
 var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
 
@@ -69,10 +65,10 @@ var INTRINSICS = {
 	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
 	'%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
 	'%AsyncFromSyncIteratorPrototype%': undefined,
-	'%AsyncFunction%': asyncFunction,
-	'%AsyncGenerator%': asyncGenFunctionPrototype,
-	'%AsyncGeneratorFunction%': asyncGenFunction,
-	'%AsyncIteratorPrototype%': asyncGenPrototype ? getProto(asyncGenPrototype) : undefined,
+	'%AsyncFunction%': needsEval,
+	'%AsyncGenerator%': needsEval,
+	'%AsyncGeneratorFunction%': needsEval,
+	'%AsyncIteratorPrototype%': needsEval,
 	'%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
 	'%BigInt%': typeof BigInt === 'undefined' ? undefined : BigInt,
 	'%Boolean%': Boolean,
@@ -89,7 +85,7 @@ var INTRINSICS = {
 	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
 	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
 	'%Function%': $Function,
-	'%GeneratorFunction%': generatorFunction,
+	'%GeneratorFunction%': needsEval,
 	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
 	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
 	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
@@ -128,6 +124,31 @@ var INTRINSICS = {
 	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
 	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined : WeakRef,
 	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet
+};
+
+var doEval = function doEval(name) {
+	var value;
+	if (name === '%AsyncFunction%') {
+		value = getEvalledConstructor('async function () {}');
+	} else if (name === '%GeneratorFunction%') {
+		value = getEvalledConstructor('function* () {}');
+	} else if (name === '%AsyncGeneratorFunction%') {
+		value = getEvalledConstructor('async function* () {}');
+	} else if (name === '%AsyncGenerator%') {
+		var fn = doEval('%AsyncGeneratorFunction%');
+		if (fn) {
+			value = fn.prototype;
+		}
+	} else if (name === '%AsyncIteratorPrototype%') {
+		var gen = doEval('%AsyncGenerator%');
+		if (gen) {
+			value = getProto(gen.prototype);
+		}
+	}
+
+	INTRINSICS[name] = value;
+
+	return value;
 };
 
 var LEGACY_ALIASES = {
@@ -220,6 +241,9 @@ var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
 
 	if (hasOwn(INTRINSICS, intrinsicName)) {
 		var value = INTRINSICS[intrinsicName];
+		if (value === needsEval) {
+			value = doEval(intrinsicName);
+		}
 		if (typeof value === 'undefined' && !allowMissing) {
 			throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
 		}
