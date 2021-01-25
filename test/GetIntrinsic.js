@@ -213,7 +213,7 @@ test('async functions', { skip: !asyncFns.length }, function (t) {
 	t.end();
 });
 
-test('async generator functions', { skip: !asyncGenFns.length }, function (t) {
+test('async generator functions', { skip: asyncGenFns.length === 0 }, function (t) {
 	var $AsyncGeneratorFunction = GetIntrinsic('%AsyncGeneratorFunction%');
 	var $AsyncGeneratorFunctionPrototype = GetIntrinsic('%AsyncGenerator%');
 	var $AsyncGeneratorPrototype = GetIntrinsic('%AsyncGeneratorPrototype%');
@@ -226,6 +226,35 @@ test('async generator functions', { skip: !asyncGenFns.length }, function (t) {
 		t.ok($isProto($AsyncGeneratorFunctionPrototype, asyncGenFn), '%AsyncGenerator% is prototype of ' + fnName);
 		t.ok($isProto($AsyncGeneratorPrototype, asyncGenFn.prototype), '%AsyncGeneratorPrototype% is prototype of ' + fnName + '.prototype');
 	});
+
+	t.end();
+});
+
+test('%ThrowTypeError%', function (t) {
+	var $ThrowTypeError = GetIntrinsic('%ThrowTypeError%');
+
+	t.equal(typeof $ThrowTypeError, 'function', 'is a function');
+	t['throws'](
+		$ThrowTypeError,
+		TypeError,
+		'%ThrowTypeError% throws a TypeError'
+	);
+
+	t.end();
+});
+
+test('allowMissing', { skip: asyncGenFns.length > 0 }, function (t) {
+	t['throws'](
+		function () { GetIntrinsic('%AsyncGeneratorPrototype%'); },
+		TypeError,
+		'throws when missing'
+	);
+
+	t.equal(
+		GetIntrinsic('%AsyncGeneratorPrototype%', true),
+		undefined,
+		'does not throw when allowMissing'
+	);
 
 	t.end();
 });
