@@ -13,6 +13,7 @@
 		"./package.json": "./package.json"
 	},
 	"scripts": {
+		"prelint": "evalmd README.md",
 		"lint": "eslint --ext=.js,.mjs .",
 		"pretest": "npm run lint",
 		"tests-only": "nyc tape 'test/**/*.js'",
@@ -51,6 +52,7 @@
 		"es-abstract": "^1.18.0-next.2",
 		"es-value-fixtures": "^1.0.0",
 		"eslint": "^7.18.0",
+		"evalmd": "^0.0.19",
 		"foreach": "^2.0.5",
 		"has-bigints": "^1.0.1",
 		"make-async-function": "^1.0.0",
