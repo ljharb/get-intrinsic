@@ -53,7 +53,7 @@ Simply clone the repo, `npm install`, and run `npm test`
 Please email [@ljharb](https://github.com/ljharb) or see https://tidelift.com/security if you have a potential security vulnerability to report.
 
 [package-url]: https://npmjs.org/package/get-intrinsic
-[npm-version-svg]: http://versionbadg.es/ljharb/get-intrinsic.svg
+[npm-version-svg]: https://versionbadg.es/ljharb/get-intrinsic.svg
 [deps-svg]: https://david-dm.org/ljharb/get-intrinsic.svg
 [deps-url]: https://david-dm.org/ljharb/get-intrinsic
 [dev-deps-svg]: https://david-dm.org/ljharb/get-intrinsic/dev-status.svg
