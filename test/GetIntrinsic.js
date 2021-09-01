@@ -12,7 +12,7 @@ var asyncGenFns = require('make-async-generator-function')();
 var callBound = require('call-bind/callBound');
 var v = require('es-value-fixtures');
 var $gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
-var defineProperty = require('es-abstract/test/helpers/defineProperty');
+var DefinePropertyOrThrow = require('es-abstract/2020/DefinePropertyOrThrow');
 
 var $isProto = callBound('%Object.prototype.isPrototypeOf%');
 
@@ -123,15 +123,15 @@ test('dotted paths', function (t) {
 			'%ObjProto_toString%',
 			'ObjProto_toString'
 		], function (name) {
-			defineProperty(Object.prototype, 'toString', {
-				value: function toString() {
+			DefinePropertyOrThrow(Object.prototype, 'toString', {
+				'[[Value]]': function toString() {
 					return original.apply(this, arguments);
 				}
 			});
 			st.equal(GetIntrinsic(name), original, name + ' yields original Object.prototype.toString');
 		});
 
-		defineProperty(Object.prototype, 'toString', { value: original });
+		DefinePropertyOrThrow(Object.prototype, 'toString', { '[[Value]]': original });
 		st.end();
 	});
 
