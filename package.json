@@ -51,7 +51,7 @@
 		"aud": "^1.1.5",
 		"auto-changelog": "^2.3.0",
 		"call-bind": "^1.0.2",
-		"es-abstract": "^1.18.5",
+		"es-abstract": "^1.19.0",
 		"es-value-fixtures": "^1.2.1",
 		"eslint": "^7.32.0",
 		"evalmd": "^0.0.19",

@@ -12,7 +12,7 @@ var asyncGenFns = require('make-async-generator-function')();
 var callBound = require('call-bind/callBound');
 var v = require('es-value-fixtures');
 var $gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
-var DefinePropertyOrThrow = require('es-abstract/2020/DefinePropertyOrThrow');
+var DefinePropertyOrThrow = require('es-abstract/2021/DefinePropertyOrThrow');
 
 var $isProto = callBound('%Object.prototype.isPrototypeOf%');
 
