@@ -47,13 +47,13 @@
 	},
 	"homepage": "https://github.com/ljharb/get-intrinsic#readme",
 	"devDependencies": {
-		"@ljharb/eslint-config": "^18.0.0",
+		"@ljharb/eslint-config": "^20.0.0",
 		"aud": "^1.1.5",
 		"auto-changelog": "^2.3.0",
 		"call-bind": "^1.0.2",
-		"es-abstract": "^1.19.0",
+		"es-abstract": "^1.19.1",
 		"es-value-fixtures": "^1.2.1",
-		"eslint": "^7.32.0",
+		"eslint": "^8.4.0",
 		"evalmd": "^0.0.19",
 		"foreach": "^2.0.5",
 		"has-bigints": "^1.0.1",
@@ -61,9 +61,9 @@
 		"make-async-generator-function": "^1.0.0",
 		"make-generator-function": "^2.0.0",
 		"nyc": "^10.3.2",
-		"object-inspect": "^1.11.0",
-		"safe-publish-latest": "^1.1.4",
-		"tape": "^5.3.1"
+		"object-inspect": "^1.11.1",
+		"safe-publish-latest": "^2.0.0",
+		"tape": "^5.3.2"
 	},
 	"auto-changelog": {
 		"output": "CHANGELOG.md",

@@ -10,13 +10,8 @@
 		"es2021": true,
 	},
 
-	"globals": {
-		"AggregateError": false,
-	},
-
 	"rules": {
 		"array-bracket-newline": 0,
-		"array-element-newline": 0,
 		"complexity": 0,
 		"eqeqeq": [2, "allow-null"],
 		"func-name-matching": 0,
@@ -27,7 +22,6 @@
 		"max-statements-per-line": [2, { "max": 2 }],
 		"multiline-comment-style": 0,
 		"no-magic-numbers": 0,
-		"operator-linebreak": [2, "before"],
 		"sort-keys": 0,
 	},
 
@@ -35,7 +29,6 @@
 		{
 			"files": "test/**",
 			"rules": {
-				"max-lines-per-function": 0,
 				"new-cap": 0,
 			},
 		},
