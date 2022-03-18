@@ -8,6 +8,7 @@
 		"es2017": true,
 		"es2020": true,
 		"es2021": true,
+		"es2022": true,
 	},
 
 	"rules": {
