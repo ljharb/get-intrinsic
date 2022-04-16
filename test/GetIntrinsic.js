@@ -8,6 +8,7 @@ var debug = require('object-inspect');
 var generatorFns = require('make-generator-function')();
 var asyncFns = require('make-async-function').list();
 var asyncGenFns = require('make-async-generator-function')();
+var mockProperty = require('mock-property');
 
 var callBound = require('call-bind/callBound');
 var v = require('es-value-fixtures');
@@ -144,15 +145,16 @@ test('dotted paths', function (t) {
 			'%ObjectPrototype.propertyIsEnumerable%',
 			'ObjectPrototype.propertyIsEnumerable'
 		], function (name) {
-			// eslint-disable-next-line no-extend-native
-			Object.prototype.propertyIsEnumerable = function propertyIsEnumerable() {
-				return original.apply(this, arguments);
-			};
+			var restore = mockProperty(Object.prototype, 'propertyIsEnumerable', {
+				value: function propertyIsEnumerable() {
+					return original.apply(this, arguments);
+				}
+			});
 			st.equal(GetIntrinsic(name), original, name + ' yields cached Object.prototype.propertyIsEnumerable');
+
+			restore();
 		});
 
-		// eslint-disable-next-line no-extend-native
-		Object.prototype.propertyIsEnumerable = original;
 		st.end();
 	});
 
