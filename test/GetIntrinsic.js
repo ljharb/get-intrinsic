@@ -67,6 +67,18 @@ test('throws', function (t) {
 		"Throws when middle part doesn't exist (%Proxy.prototype.undefined%)"
 	);
 
+	t['throws'](
+		function () { GetIntrinsic('%Array.prototype%garbage%'); },
+		SyntaxError,
+		'Throws with extra percent signs'
+	);
+
+	t['throws'](
+		function () { GetIntrinsic('%Array.prototype%push%'); },
+		SyntaxError,
+		'Throws with extra percent signs, even on an existing intrinsic'
+	);
+
 	forEach(v.nonStrings, function (nonString) {
 		t['throws'](
 			function () { GetIntrinsic(nonString); },
