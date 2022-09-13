@@ -80,6 +80,9 @@
 		"has": "^1.0.3",
 		"has-symbols": "^1.0.3"
 	},
+	"testling": {
+		"files": "test/GetIntrinsic.js"
+	},
 	"publishConfig": {
 		"ignore": [
 			".github/workflows"
