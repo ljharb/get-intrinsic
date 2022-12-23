@@ -49,10 +49,10 @@
 	"homepage": "https://github.com/ljharb/get-intrinsic#readme",
 	"devDependencies": {
 		"@ljharb/eslint-config": "^21.0.0",
-		"aud": "^2.0.1",
+		"aud": "^2.0.2",
 		"auto-changelog": "^2.4.0",
 		"call-bind": "^1.0.2",
-		"es-abstract": "^1.20.4",
+		"es-abstract": "^1.20.5",
 		"es-value-fixtures": "^1.4.2",
 		"eslint": "=8.8.0",
 		"evalmd": "^0.0.19",
