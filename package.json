@@ -79,7 +79,6 @@
 	"dependencies": {
 		"function-bind": "^1.1.1",
 		"has": "^1.0.3",
-		"has-proto": "^1.0.1",
 		"has-symbols": "^1.0.3"
 	},
 	"testling": {
