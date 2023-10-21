@@ -78,9 +78,9 @@
 	},
 	"dependencies": {
 		"function-bind": "^1.1.2",
-		"has": "^1.0.3",
 		"has-proto": "^1.0.1",
-		"has-symbols": "^1.0.3"
+		"has-symbols": "^1.0.3",
+		"hasown": "^2.0.0"
 	},
 	"testling": {
 		"files": "test/GetIntrinsic.js"
