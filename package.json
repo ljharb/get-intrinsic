@@ -85,5 +85,8 @@
 		"ignore": [
 			".github/workflows"
 		]
+	},
+	"engines": {
+		"node": ">= 0.4"
 	}
 }
