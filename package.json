@@ -4,12 +4,7 @@
 	"description": "Get and robustly cache all JS language-level intrinsics at first require time",
 	"main": "index.js",
 	"exports": {
-		".": [
-			{
-				"default": "./index.js"
-			},
-			"./index.js"
-		],
+		".": "./index.js",
 		"./package.json": "./package.json"
 	},
 	"sideEffects": false,
