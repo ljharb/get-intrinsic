@@ -2,9 +2,11 @@
 
 var undefined;
 
-var $SyntaxError = SyntaxError;
+var $RangeError = require('es-errors/range');
+var $SyntaxError = require('es-errors/syntax');
+var $TypeError = require('es-errors/type');
+
 var $Function = Function;
-var $TypeError = TypeError;
 
 // eslint-disable-next-line consistent-return
 var getEvalledConstructor = function (expressionSyntax) {
@@ -101,7 +103,7 @@ var INTRINSICS = {
 	'%parseInt%': parseInt,
 	'%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
 	'%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
-	'%RangeError%': RangeError,
+	'%RangeError%': $RangeError,
 	'%ReferenceError%': ReferenceError,
 	'%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
 	'%RegExp%': RegExp,
