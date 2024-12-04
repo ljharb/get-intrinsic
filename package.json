@@ -47,6 +47,7 @@
 		"@ljharb/eslint-config": "^21.1.1",
 		"auto-changelog": "^2.5.0",
 		"call-bind": "^1.0.7",
+		"encoding": "^0.1.13",
 		"es-abstract": "^1.23.5",
 		"es-value-fixtures": "^1.5.0",
 		"eslint": "=8.8.0",
