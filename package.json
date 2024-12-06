@@ -44,6 +44,7 @@
 	},
 	"homepage": "https://github.com/ljharb/get-intrinsic#readme",
 	"dependencies": {
+		"es-define-property": "^1.0.0",
 		"es-errors": "^1.3.0",
 		"function-bind": "^1.1.2",
 		"gopd": "^1.2.0",
