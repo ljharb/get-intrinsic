@@ -2,6 +2,8 @@
 
 var undefined;
 
+var $Object = require('es-object-atoms');
+
 var $Error = require('es-errors');
 var $EvalError = require('es-errors/eval');
 var $RangeError = require('es-errors/range');
@@ -46,7 +48,7 @@ var hasSymbols = require('has-symbols')();
 var getDunderProto = require('dunder-proto/get');
 
 var getProto = (typeof Reflect === 'function' && Reflect.getPrototypeOf)
-	|| Object.getPrototypeOf
+	|| $Object.getPrototypeOf
 	|| getDunderProto;
 
 var $apply = require('call-bind-apply-helpers/functionApply');
@@ -97,7 +99,7 @@ var INTRINSICS = {
 	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols || !getProto ? undefined : getProto(new Map()[Symbol.iterator]()),
 	'%Math%': Math,
 	'%Number%': Number,
-	'%Object%': Object,
+	'%Object%': $Object,
 	'%Object.getOwnPropertyDescriptor%': $gOPD,
 	'%parseFloat%': parseFloat,
 	'%parseInt%': parseInt,
