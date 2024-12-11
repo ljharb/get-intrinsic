@@ -52,7 +52,8 @@
 		"function-bind": "^1.1.2",
 		"gopd": "^1.2.0",
 		"has-symbols": "^1.1.0",
-		"hasown": "^2.0.2"
+		"hasown": "^2.0.2",
+		"math-intrinsics": "^1.0.0"
 	},
 	"devDependencies": {
 		"@ljharb/eslint-config": "^21.1.1",

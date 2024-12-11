@@ -12,6 +12,12 @@ var $SyntaxError = require('es-errors/syntax');
 var $TypeError = require('es-errors/type');
 var $URIError = require('es-errors/uri');
 
+var abs = require('math-intrinsics/abs');
+var floor = require('math-intrinsics/floor');
+var max = require('math-intrinsics/max');
+var min = require('math-intrinsics/min');
+var pow = require('math-intrinsics/pow');
+
 var $Function = Function;
 
 // eslint-disable-next-line consistent-return
@@ -130,7 +136,12 @@ var INTRINSICS = {
 
 	'%Function.prototype.call%': $call,
 	'%Function.prototype.apply%': $apply,
-	'%Object.defineProperty%': $defineProperty
+	'%Object.defineProperty%': $defineProperty,
+	'%Math.abs%': abs,
+	'%Math.floor%': floor,
+	'%Math.max%': max,
+	'%Math.min%': min,
+	'%Math.pow%': pow
 };
 
 if (getProto) {
