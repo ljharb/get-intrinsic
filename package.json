@@ -1,6 +1,6 @@
 {
 	"name": "get-intrinsic",
-	"version": "1.2.6",
+	"version": "1.2.7",
 	"description": "Get and robustly cache all JS language-level intrinsics at first require time",
 	"main": "index.js",
 	"exports": {
