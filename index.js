@@ -17,6 +17,8 @@ var floor = require('math-intrinsics/floor');
 var max = require('math-intrinsics/max');
 var min = require('math-intrinsics/min');
 var pow = require('math-intrinsics/pow');
+var round = require('math-intrinsics/round');
+var sign = require('math-intrinsics/sign');
 
 var $Function = Function;
 
@@ -142,6 +144,8 @@ var INTRINSICS = {
 	'%Math.max%': max,
 	'%Math.min%': min,
 	'%Math.pow%': pow,
+	'%Math.round%': round,
+	'%Math.sign%': sign,
 	'%Reflect.getPrototypeOf%': $ReflectGPO
 };
 
