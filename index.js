@@ -20,15 +20,6 @@ var pow = require('math-intrinsics/pow');
 var round = require('math-intrinsics/round');
 var sign = require('math-intrinsics/sign');
 
-var $Function = Function;
-
-// eslint-disable-next-line consistent-return
-var getEvalledConstructor = function (expressionSyntax) {
-	try {
-		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
-	} catch (e) {}
-};
-
 var $gOPD = require('gopd');
 var $defineProperty = require('es-define-property');
 
@@ -94,7 +85,7 @@ var INTRINSICS = {
 	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
 	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
 	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
-	'%Function%': $Function,
+	'%Function%': Function,
 	'%GeneratorFunction%': needsEval,
 	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
 	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
@@ -160,14 +151,18 @@ if (getProto) {
 	}
 }
 
+var getAsyncFunction = require('async-function');
+var getGeneratorFunction = require('generator-function');
+var getAsyncGeneratorFunction = require('async-generator-function');
+
 var doEval = function doEval(name) {
 	var value;
 	if (name === '%AsyncFunction%') {
-		value = getEvalledConstructor('async function () {}');
+		value = getAsyncFunction() || void undefined;
 	} else if (name === '%GeneratorFunction%') {
-		value = getEvalledConstructor('function* () {}');
+		value = getGeneratorFunction() || void undefined;
 	} else if (name === '%AsyncGeneratorFunction%') {
-		value = getEvalledConstructor('async function* () {}');
+		value = getAsyncGeneratorFunction() || void undefined;
 	} else if (name === '%AsyncGenerator%') {
 		var fn = doEval('%AsyncGeneratorFunction%');
 		if (fn) {
