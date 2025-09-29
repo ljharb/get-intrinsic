@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.3.1](https://github.com/ljharb/get-intrinsic/compare/v1.3.0...v1.3.1) - 2025-09-29
+
+### Commits
+
+- [Refactor] maximally avoid eval with `async-function`, `generator-function`, `async-generator-function` packages [`93232c9`](https://github.com/ljharb/get-intrinsic/commit/93232c9e84572e002929a038559b2fe3e2e92aed)
+- [Dev Deps] update `@ljharb/eslint-config`, `call-bound`, `es-abstract` [`c9de798`](https://github.com/ljharb/get-intrinsic/commit/c9de798767de6b9ebf0312c4d8fcb272976ca579)
+
 ## [v1.3.0](https://github.com/ljharb/get-intrinsic/compare/v1.2.7...v1.3.0) - 2025-02-22
 
 ### Commits
